@@ -1,0 +1,70 @@
+This utility is maintained here:
+
+https://git.linuxtv.org/edid-decode.git/
+
+To build this do:
+
+git clone git://linuxtv.org/edid-decode.git
+cd edid-decode
+make
+make install
+
+Patches and bug reports can be sent to the linux-media@vger.kernel.org
+mailinglist (see https://www.linuxtv.org/lists.php). Please make sure
+that 'edid-decode' appears in the subject line and don't forget to
+add a 'Signed-off-by' line when submitting patches!
+
+If you don't know what that is, then see:
+https://elinux.org/Developer_Certificate_Of_Origin
+
+New sample EDIDs are welcome. Please note that these must be real
+EDIDs read from real hardware, so no artificially constructed EDIDs.
+
+The naming of EDIDs in the data directory is:
+
+<vendor>-<model>-<port>[-tileX]
+
+<port> is one of dp, hdmi, vga, dvi
+When a tile is also specified, then dp should include the DP connector
+number, e.g. dp1-tile0, dp2-tile1.
+
+All lower case.
+
+If the EDID was modified by other devices in the chain (e.g. AV Receivers),
+then name the EDID as:
+
+<TV vendor>-<TV model>-<TV port>-<AV vendor>-<AV model>-<AV port>
+
+The test directory contains some special input files to verify the
+edid-decode parser and hand-crafted EDIDs to test rarely seen
+EDID features.
+
+I host a simple website where you can paste an EDID and get the full
+edid-decode output here:
+
+https://hverkuil.home.xs4all.nl/edid-decode/edid-decode.html
+
+This is updated regularly with the latest edid-decode. It uses emscripten
+and the html file is maintained in the emscripten directory of edid-decode.
+To build edid-decode.js/wasm run 'make edid-decode.js'. This assumes
+that emscripten is installed, of course.
+
+You can use the konqueror browser to run it locally:
+
+	konqueror emscripten/edid-decode.html
+
+For other browsers you need to serve the files using a local webserver.
+See also https://emscripten.org/docs/getting_started/Tutorial.html
+
+You can find a very large collection of EDIDs here:
+https://github.com/linuxhw/EDID
+
+This collection has been used to test edid-decode.
+
+I can also be contacted directly:
+
+Hans Verkuil <hverkuil-cisco@xs4all.nl>
+
+Regards,
+
+	Hans
